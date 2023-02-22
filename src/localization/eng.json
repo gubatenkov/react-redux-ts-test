@@ -20,5 +20,7 @@
   "Week": "Week",
   "You made an extra": "You made an extra",
   "this year": "this year",
-  "This Week Statistics": "This Week Statistics"
+  "This Week Statistics": "This Week Statistics",
+  "Invalid username or password": "Invalid username or password",
+  "Access denied. Please, login": "Access denied. Please, login first"
 }

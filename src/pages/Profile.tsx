@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 import { Navigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
@@ -18,7 +19,6 @@ import OrdersTable from "@/components/OrdersTable";
 import IncomeAreaChart from "@/components/IncomeAreaChart";
 import MonthlyBarChart from "@/components/MonthlyBarChart";
 import ReportAreaChart from "@/components/ReportAreaChart";
-// import SalesColumnChart from "@/components/SalesColumnChart";
 import AnalyticEcommerce from "@/components/AnalyticEcommerce";
 
 import useAppSelector from "../hooks/useSelector";
@@ -28,7 +28,13 @@ const Profile = () => {
   const [slot, setSlot] = useState("week");
   const { user } = useAppSelector((state) => state.auth);
 
-  if (!user) return <Navigate to={"/"} />;
+  if (!user) {
+    toast(t("Access denied. Please, login"), {
+      position: "bottom-right",
+      type: "error",
+    });
+    return <Navigate to={"/"} />;
+  }
 
   return (
     <Grid container rowSpacing={4.5} columnSpacing={2.75}>

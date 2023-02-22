@@ -68,7 +68,7 @@ const AuthLogin = () => {
       navigate("/profile");
     } catch (err) {
       console.log(err);
-      toast("Invalid username or password", {
+      toast(t("Invalid username or password"), {
         type: "error",
         position: "bottom-right",
       });

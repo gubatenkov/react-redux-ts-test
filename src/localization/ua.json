@@ -20,5 +20,7 @@
   "Forgot Password?": "Забули Пароль?",
   "Keep me sign in": "Запамʼятати мене",
   "Login with": "Увійти за допомогою",
-  "Profile": "Профіль"
+  "Profile": "Профіль",
+  "Invalid username or password": "Неправильний логін чи пароль",
+  "Access denied. Please, login": "У доступі відмовлено. Будь ласка, увійдіть в систему"
 }
