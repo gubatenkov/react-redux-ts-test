@@ -10,16 +10,18 @@ import { useLazyFetchNewsQuery } from "../store/api/newsApi";
 import { loadNextPage, setArticlesToStore } from "../store/slices/newsSlice";
 
 const News = () => {
+  const perPage = 10;
   const dispatch = useDispatch();
   const { page, articles } = useAppSelector((state) => state.news);
   const [fetchArticlesByPage, { isLoading }] = useLazyFetchNewsQuery();
+  const start = (page - 1) * perPage;
+  const end = start + perPage;
 
   const fetchArticles = async () => {
     try {
-      const res = await fetchArticlesByPage(page).unwrap();
-      if (res.status === "ok") {
-        dispatch(setArticlesToStore(res.articles));
-      }
+      const posts = await fetchArticlesByPage(page).unwrap();
+      const paginatedPosts = posts.slice(start, end);
+      dispatch(setArticlesToStore(paginatedPosts));
     } catch (err) {
       console.log(err);
     }
@@ -54,8 +56,8 @@ const News = () => {
                 }}
               />
             ))
-          : articles.map((article, idx) => (
-              <NewsCard key={`${article.title} + ${idx}`} {...article} />
+          : articles.map((article) => (
+              <NewsCard key={article.id} {...article} />
             ))}
       </Box>
 

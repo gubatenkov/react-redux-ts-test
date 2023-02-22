@@ -4,13 +4,13 @@ import { Grid, Stack, Typography } from "@mui/material";
 
 import MainCard from "./MainCard";
 import type { Article } from "../store/api/newsApi";
-import { removeArticleByTitle } from "../store/slices/newsSlice";
+import { removeArticleById } from "../store/slices/newsSlice";
 
-const NewsCard: FC<Article> = ({ title, description }) => {
+const NewsCard: FC<Article> = ({ id, title, body }) => {
   const dispatch = useDispatch();
 
   const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    dispatch(removeArticleByTitle(title));
+    dispatch(removeArticleById(id));
   };
 
   return (
@@ -27,7 +27,7 @@ const NewsCard: FC<Article> = ({ title, description }) => {
         <Grid container alignItems="center">
           <Grid item>
             <Typography variant="body1" color="inherit">
-              {description}
+              {body}
             </Typography>
           </Grid>
         </Grid>

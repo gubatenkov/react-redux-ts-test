@@ -17,19 +17,19 @@ export const newsSlice = createSlice({
       ++state.page;
     },
     setArticlesToStore: (state, action: PayloadAction<Article[]>) => {
-      const titles = state.articles.map((art) => art.title);
+      const idArr = state.articles.map((art) => art.id);
       action.payload.forEach((article) =>
-        titles.includes(article.title) ? null : state.articles.push(article)
+        idArr.includes(article.id) ? null : state.articles.push(article)
       );
     },
-    removeArticleByTitle: (state, action: PayloadAction<string>) => {
+    removeArticleById: (state, action: PayloadAction<number>) => {
       state.articles = state.articles.filter(
-        (article) => article.title !== action.payload
+        (article) => article.id !== action.payload
       );
     },
   },
 });
 
 export const newsReducer = newsSlice.reducer;
-export const { loadNextPage, setArticlesToStore, removeArticleByTitle } =
+export const { loadNextPage, setArticlesToStore, removeArticleById } =
   newsSlice.actions;
