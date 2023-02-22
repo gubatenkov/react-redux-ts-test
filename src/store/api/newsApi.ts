@@ -20,10 +20,16 @@ interface QueryResponse<T> {
   totalResults: number;
 }
 
+const proxyUrl = "https://cors-anywhere.herokuapp.com/";
+
 export const newsApi = createApi({
   reducerPath: "newsApi",
   baseQuery: fetchBaseQuery({
     baseUrl: "https://newsapi.org/v2/everything/",
+    fetchFn: ({ url }: any) => {
+      const request = new Request(`${proxyUrl}${url}`);
+      return fetch(request);
+    },
   }),
   endpoints: (builder) => ({
     fetchNews: builder.query<QueryResponse<Article[]>, number>({
