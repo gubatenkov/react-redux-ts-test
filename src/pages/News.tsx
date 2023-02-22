@@ -4,6 +4,7 @@ import { LoadingOutlined } from "@ant-design/icons";
 import { Box, Skeleton, Button } from "@mui/material";
 
 import NewsCard from "@/components/NewsCard";
+
 import useAppSelector from "../hooks/useSelector";
 import { useLazyFetchNewsQuery } from "../store/api/newsApi";
 import { loadNextPage, setArticlesToStore } from "../store/slices/newsSlice";

@@ -1,4 +1,5 @@
 import { Theme } from "@mui/material";
+// @ts-ignore
 import { alpha } from "@mui/material/styles";
 
 export default function OutlinedInput(theme: Theme) {
